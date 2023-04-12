@@ -58,7 +58,7 @@ public class Validator {
 	/**
 	 * Cumple con todo mayusculas y numeros de longitud 5
 	 */
-	private final static String CODIGO_PATTERN="^[A-Z0-9]{5}$";
+	private final static String CODIGO_PATTERN="^[A-Z]{2}\\d{3}$";
 	
 	
 	

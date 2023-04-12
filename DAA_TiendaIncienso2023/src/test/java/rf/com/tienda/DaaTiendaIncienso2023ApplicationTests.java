@@ -230,9 +230,9 @@ class DaaTiendaIncienso2023ApplicationTests {
 	@Test
 	void esIdProductoValidoTest()
 	{
-		String cod1="ADE12";
+		String cod1="AD123";
 		String cod2="asE12";
-		String cod3="AEE122";
+		String cod3="AEE12";
 		assertEquals(va.esIdProductoValido(cod1), true);
 		assertEquals(va.esIdProductoValido(cod2), false);
 		assertEquals(va.esIdProductoValido(cod3), false);
