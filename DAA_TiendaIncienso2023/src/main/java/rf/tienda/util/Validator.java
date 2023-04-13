@@ -1,6 +1,7 @@
 package rf.tienda.util;
 
 import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.regex.Pattern;
 
 
@@ -189,7 +190,7 @@ public class Validator {
 			//si cumple la expresión regular vamos a ver si el modulo de la cifra  se corresponde con la letra, por lo que vamos a sacar los números de la cadena
 			String cifra="";
 			String letra="";
-			String letrasDni="TRWAGMYFPDXBNJZSQVHLCKE";
+			
 			
 			//extraemos los números y la letra del dni
 			for(int i=0;i<dni.length();i++)
@@ -212,7 +213,7 @@ public class Validator {
 			int numLetra=Numero%23;
 			//comparamos si el numLetra coincide con la posicion de la cadena
 			Character Mayuscula=Character.toUpperCase(letra.charAt(0));
-			if(Mayuscula==letrasDni.charAt(numLetra))
+			if(Mayuscula==LETRA_DNI.charAt(numLetra))
 			{
 				cumple=true;
 			}
@@ -525,7 +526,9 @@ public class Validator {
 	/*
 	 * a partir de aquí empiezan los métodos de las tablas
 	 */
-	
+	/* ****************************************************************************
+	 * TABLA PRODUCTOS
+	 * ****************************************************************************/
 	/**
 	 * Campo: id_producto
 	 * 
@@ -641,6 +644,304 @@ public class Validator {
 		}
 	}
 	
+	/**
+	 * Campo: pro_fecActi
+	 * Descripción: fecha de activación del producto
+	 * @param fecha de activación LocalDate
+	 * @return true si la fecha de activación es mayor que la actual
+	 */
+
+	public static boolean proFecActivacion(LocalDate fecAct)
+	{
+		LocalDate fechaActual=LocalDate.now();
+		if(valDateMax(fechaActual, fecAct))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+		
+		
+		
+	}
+	/**
+	 * Campo: pro_fecDesacti
+	 * Descripción: Fecha de desactivación del producto
+	 * @param fecha desactivacion LocalDate
+	 * @param fechac activación LocalDate que por defecto sera null
+	 * @return true si la fecha de desactivación es mayor que la actual en caso que la fecha de 
+	 * activacion sea null, y mayor que la fecha de activacion en caso contrario
+	 */
+	
+	public static boolean proFecDesactivacion(LocalDate fecDesac, LocalDate fecAct)
+	{
+		
+		if(fecDesac.isAfter(fecAct))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+		
+	}
+	
+	public static boolean proFecDesactivacion(LocalDate fecDesac)
+	{
+		
+		LocalDate actual=LocalDate.now();
+		if(fecDesac.isAfter(actual))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+		
+	}
+	
+	/* ****************************************************************************
+	 * TABLA USUARIOS
+	 * ****************************************************************************/
+	
+	/**
+	 * Campo: user_nombre
+	 * Descripción: Nombre de usuario
+	 * @param nombre string
+	 * @return true si el nombre cumple el rango de longitud(5,100)
+	 */
+	
+	public static boolean userNombreValido(String nomb)
+	{
+		if(cumpleLongitud(nomb, 5, 100))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+
+	/**
+	 * Campo: user_email
+	 * Descripción: Correo electrónico
+	 * @param correo string
+	 * @return true si el correo es válido
+	 */
+	
+	
+	public static boolean userEmailValido(String correo)
+	{
+		
+		boolean cumple=false;
+		if(isEmailValido(correo))
+		{
+			//comprobamos tb que la longitud esté entre 5 y 100, ambos inclusive
+			if(cumpleLongitud(correo, 5, 100))
+			{
+				cumple=true;
+			}
+		}
+		
+		return cumple;
+		
+	}
+	
+	/**
+	 * Campo: user_pass
+	 * Descripción: Contraseña del usuario
+	 * @param contraseña string 
+	 * @return true si la contraseña cumple las condiciones(minimo 1 número,1 letra min y otra mayuscula y un carácter especial) y con longitud mínima
+	 */
+	
+	
+	public static boolean userPassValido(String pass)
+	{
+		boolean valido=false;
+		//primero comprbamos la longitud
+		if(cumpleLongitud(pass, 8, 20))
+		{
+			if(esPasswordValida(pass))
+			{
+				valido=true;
+			}
+		}
+		
+		return valido;
+		
+	}
+	
+	/**
+	 * Campo: user_dni
+	 * Descripción: dni de usuario
+	 * @param dni string 
+	 * @return true si cumple el filtro de dni
+	 */
+	
+	public static boolean userDniValido(String dni )
+	{
+		if(cumpleDNI(dni))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+		
+	}
+	
+	/**
+	 * Campo: user_fecAlta
+	 * Descripción: comprueba la fecha de alta coincide con la actual
+	 * @param fecha LocalDate
+	 * @return true si la fecha coincide con la actual
+	 */
+	
+	public static boolean userFecAlta(Calendar fec)
+	{
+		Calendar hoy=Calendar.getInstance();
+		//tenemos que comparar cada campo por separado, ya que el método compareTo compara hasta los segundos y minutos, y nunca van a coincidir
+		int añoHoy=hoy.get(Calendar.YEAR);
+		int mesHoy=hoy.get(Calendar.MONTH);
+		int diaHoy=hoy.get(Calendar.DAY_OF_MONTH);
+		
+		int añoFec=fec.get(Calendar.YEAR);
+		int mesFec=fec.get(Calendar.MONTH);
+		int diaFec=fec.get(Calendar.DAY_OF_MONTH);
+		
+		
+		if(diaHoy==diaFec&&mesHoy==mesFec&&añoHoy==añoFec)			
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	
+	/**
+	 * Campo: user_fecConfirmacion
+	 * Descripción: Comprueba que la fecha de confirmación sea la de hoy
+	 * @param fecha LocalDate
+	 * @return 
+	 * 
+	 */
+	 public static boolean userFecConfirmacion(Calendar fec)
+	 {
+		 
+		 Calendar hoy=Calendar.getInstance();
+			//tenemos que comparar cada campo por separado, ya que el método compareTo compara hasta los segundos y minutos, y nunca van a coincidir
+			int añoHoy=hoy.get(Calendar.YEAR);
+			int mesHoy=hoy.get(Calendar.MONTH);
+			int diaHoy=hoy.get(Calendar.DAY_OF_MONTH);
+			
+			int añoFec=fec.get(Calendar.YEAR);
+			int mesFec=fec.get(Calendar.MONTH);
+			int diaFec=fec.get(Calendar.DAY_OF_MONTH);
+			
+			
+			if(diaHoy==diaFec&&mesHoy==mesFec&&añoHoy==añoFec)			
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		 
+		 
+		 
+	 }
+	
+
+		/* ****************************************************************************
+		 * TABLA CATEGORIA
+		 * ****************************************************************************/
+	
+	 /**
+	  * Campo: cat_nombre
+	  * Descripción: nombre de la categría
+	  * @param nombre string
+	  * @return true si la longitud si cumple la longitud(5,50)
+	  */
+	
+	 
+	 public static boolean catNombreValido(String cat)
+	 {
+		 
+		 if(cumpleLongitud(cat, 5, 50))
+		 {
+			 return true;
+		 }
+		 else
+		 {
+			 return false;
+		 }
+		 
+		 
+	 }
+	 
+	 /* ****************************************************************************
+	  * TABLA PEDIDO/CARRITO
+	  * ****************************************************************************/
+	 
+	 /**
+	  * Campo: car_cantidad
+	  * Descripción: cantidad de productos que hay en una linea de producto
+	  * @param cantidad int
+	  * @return true 
+	  * 
+	  */
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 /**
+	  * Campo: car_feCadud
+	  * Descripción: fecha de caducidad de la tarjeta de crédito
+	  * @param fecha LocalDate
+	  * @return true si la fecha de caducidad es mayor a la actual
+	  */
+	 
+	 
+	 public static boolean carFeCadudValida(LocalDate fecha)
+	 {
+		 LocalDate hoy=LocalDate.now();
+		 
+		 if(fecha.isAfter(hoy))
+		 {
+			 return true;
+		 }
+		 else
+		 {
+			 return false;
+		 }
+		 
+		 
+	 }
+	 
+	 
+	 
 	
 	
 }
