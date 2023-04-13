@@ -14,7 +14,7 @@ import jakarta.persistence.Id;
 public class PedidoCarrito {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue		
 	private int id_pedido;
 	private int id_usuario;
 	private String id_producto;

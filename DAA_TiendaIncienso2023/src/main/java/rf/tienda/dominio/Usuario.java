@@ -122,6 +122,15 @@ public class Usuario {
 	public void setUser_fecConfirmacion(LocalDate user_fecConfirmacion) {
 		this.user_fecConfirmacion = user_fecConfirmacion;
 	}
+
+
+
+	@Override
+	public String toString() {
+		return "Usuario [id_usuario=" + id_usuario + ", user_nombre=" + user_nombre + ", user_email=" + user_email
+				+ ", user_pass=" + user_pass + ", user_tipo=" + user_tipo + ", user_dni=" + user_dni + ", user_fecAlta="
+				+ user_fecAlta + ", user_fecConfirmacion=" + user_fecConfirmacion + "]";
+	}
 	
 	
 	

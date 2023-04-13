@@ -1,5 +1,9 @@
 package rf.tienda.dominio;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import rf.tienda.util.Validator;
 
 /**
@@ -10,8 +14,11 @@ import rf.tienda.util.Validator;
  * @version		13 de abr. de 2016
  *
  */
+@Entity
 public class Categoria {
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id_categoria;			//identificador categoria
 	
 	private String cat_nombre;			//nombre de la categoria
@@ -40,7 +47,11 @@ public class Categoria {
 	 * 
 	 */
 	public void setId_categoria(int id_categoria) {
-		this.id_categoria = id_categoria;
+		if(id_categoria>0)
+		{
+			this.id_categoria = id_categoria;
+		}
+		
 	}
 	
 	/**
@@ -56,7 +67,12 @@ public class Categoria {
 	 * 
 	 */
 	public void setCat_nombre(String cat_nombre) {
-		this.cat_nombre = cat_nombre;
+		
+		if(Validator.catNombreValido(cat_nombre))
+		{
+			this.cat_nombre = cat_nombre;
+		}
+		
 	}
 	
 	/**
@@ -72,8 +88,14 @@ public class Categoria {
 	 * 
 	 */
 	public void setCat_descripcion(String cat_descripcion) {
-		this.cat_descripcion = cat_descripcion;
+		
+		if(cat_descripcion.length()<=200)
+		{
+			this.cat_descripcion = cat_descripcion;
+		}
+		
 	}
+		
 
 
 	@Override
