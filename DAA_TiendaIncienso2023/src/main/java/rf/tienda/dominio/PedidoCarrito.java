@@ -197,6 +197,17 @@ public class PedidoCarrito {
 	public void setCar_feCambio(List<String> car_feCambio) {
 		this.car_feCambio = car_feCambio;
 	}
+
+
+
+	@Override
+	public String toString() {
+		return "PedidoCarrito [id_pedido=" + id_pedido + ", id_usuario=" + id_usuario + ", id_producto=" + id_producto
+				+ ", car_cantidad=" + car_cantidad + ", car_precio=" + car_precio + ", car_envio=" + car_envio
+				+ ", car_pago=" + car_pago + ", car_tarjeta=" + car_tarjeta + ", car_feCadud=" + car_feCadud
+				+ ", car_ccv=" + car_ccv + ", car_nombre=" + car_nombre + ", car_stat=" + car_stat + ", car_feCambio="
+				+ car_feCambio + "]";
+	}
 	
 	
 	
