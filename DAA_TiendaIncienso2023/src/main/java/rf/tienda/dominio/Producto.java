@@ -12,6 +12,8 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import rf.tienda.util.ErrorMessages;
 import rf.tienda.util.Validator;
 
@@ -34,7 +36,8 @@ public class Producto {
 	private String pro_uniUltNivel;
 	private int id_pais;
 	private String pro_usoRecomendado;
-	private int id_categoria;
+	@OneToOne	
+	private Categoria id_categoria;
 	private int pro_stkReservado;
 	private int pro_nStkAlto;
 	private int pro_nStkBajo;
@@ -276,13 +279,16 @@ public class Producto {
 
 
 
-	public int getId_categoria() {
+	
+
+
+	public Categoria getId_categoria() {
 		return id_categoria;
 	}
 
 
 
-	public void setId_categoria(int id_categoria) {
+	public void setId_categoria(Categoria id_categoria) {
 		this.id_categoria = id_categoria;
 	}
 
