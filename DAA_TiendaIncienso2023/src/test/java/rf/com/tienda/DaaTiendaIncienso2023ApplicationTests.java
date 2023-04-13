@@ -428,18 +428,16 @@ class DaaTiendaIncienso2023ApplicationTests {
 	void userPassValidoTest()
 	{
 		
-		String pass1="Legalidad2022@";
-		String pass2="pass@";
-		String pass3="123456";
-		String pass4="asd1234@";
-		String pass5="ASD1234@";
-		assertEquals(va.userPassValido(pass1), true);
-		assertEquals(va.userPassValido(pass2), false);
-		assertEquals(va.userPassValido(pass3), false);
-		assertEquals(va.userPassValido(pass4), false);
-		assertEquals(va.userPassValido(pass5), false);
+		
+		assertEquals(va.userPassValido(PASSWORD1), true);
+		assertEquals(va.userPassValido(PASSWORD2), false);
+		assertEquals(va.userPassValido(PASSWORD3), false);
+		assertEquals(va.userPassValido(PASSWORD4), false);
+		assertEquals(va.userPassValido(PASSWORD5), false);
 
 
+		
+		
 		
 		
 	}
