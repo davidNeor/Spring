@@ -704,6 +704,14 @@ public class Validator {
 		
 	}
 	
+	/**
+	 * Campo: pro_stat
+	 * Descripción: Estado
+	 * @param estado Character
+	 * @return true si el carácter es A o B
+	 */
+	
+	
 	/* ****************************************************************************
 	 * TABLA USUARIOS
 	 * ****************************************************************************/

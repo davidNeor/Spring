@@ -222,6 +222,7 @@ public class Producto {
 
 
 	public void setPro_uniVenta(String pro_uniVenta) {
+		
 		this.pro_uniVenta = pro_uniVenta;
 	}
 

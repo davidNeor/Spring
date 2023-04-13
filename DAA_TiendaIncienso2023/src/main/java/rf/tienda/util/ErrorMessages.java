@@ -15,7 +15,7 @@ package rf.tienda.util;
  *  *****************************************************/
 public class ErrorMessages {
 	
-	
+	/*MENSAJES PARA PRODUCTO*****************************/
 		
 	/**
 	 * Codigo de producto
@@ -41,5 +41,32 @@ public class ErrorMessages {
 	 */
 	public final static String PROERR_007="El stock no puede ser negativo";
 	
-
+	/* MENSAJES PARA USUARIOS ******************************/ 
+	
+	/**
+	 * LONGITUD
+	 */
+	public final static String USUERR_001="La longitud de user_nombre tiene que estar entre 5 y 100";
+	/**
+	 * FORMATO
+	 */
+	public final static String USUERR_002="No cumple el formato del correo electrónico";
+	public final static String USUERR_003="No cumplo el formato de contraseña";
+	
+	/**
+	 * DNI
+	 */
+	
+	public final static String USUERR_004="No cumple el formato de DNI";
+	
+	/**
+	 *FECHA 
+	 */
+	
+	public final static String USUERR_005="La fecha debe ser la actual";
+	
+	
+	
+	
+	
 }

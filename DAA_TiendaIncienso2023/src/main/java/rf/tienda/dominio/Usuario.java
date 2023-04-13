@@ -6,6 +6,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import rf.tienda.util.ErrorMessages;
+import rf.tienda.util.Validator;
 
 @Entity
 public class Usuario {
@@ -48,7 +50,15 @@ public class Usuario {
 
 
 	public void setUser_nombre(String user_nombre) {
-		this.user_nombre = user_nombre;
+		if(Validator.userNombreValido(user_nombre))
+		{
+			this.user_nombre = user_nombre;
+
+		}
+		else
+		{
+			System.out.println(ErrorMessages.USUERR_001);
+		}
 	}
 
 
@@ -60,7 +70,16 @@ public class Usuario {
 
 
 	public void setUser_email(String user_email) {
-		this.user_email = user_email;
+		
+		if(Validator.userEmailValido(user_email))
+		{
+			this.user_email = user_email;
+		}
+		else
+		{
+			System.out.println(ErrorMessages.USUERR_002);
+		}
+		
 	}
 
 
@@ -72,7 +91,15 @@ public class Usuario {
 
 
 	public void setUser_pass(String user_pass) {
-		this.user_pass = user_pass;
+		if(Validator.userPassValido(user_pass))
+		{
+			this.user_pass = user_pass;
+		}
+		else
+		{
+			System.out.println(ErrorMessages.USUERR_003);
+		}
+		
 	}
 
 
@@ -96,7 +123,15 @@ public class Usuario {
 
 
 	public void setUser_dni(String user_dni) {
-		this.user_dni = user_dni;
+		
+		if(Validator.userDniValido(user_dni))
+		{
+			this.user_dni = user_dni;
+		}
+		else
+		{
+			System.out.println(ErrorMessages.USUERR_004);
+		}
 	}
 
 
@@ -108,7 +143,16 @@ public class Usuario {
 
 
 	public void setUser_fecAlta(LocalDate user_fecAlta) {
-		this.user_fecAlta = user_fecAlta;
+		
+		if(Validator.userFecAlta(user_fecAlta))
+		{
+			this.user_fecAlta = user_fecAlta;
+		}
+		else
+		{
+			System.out.println(ErrorMessages.USUERR_005);
+		}
+		
 	}
 
 
@@ -120,7 +164,16 @@ public class Usuario {
 
 
 	public void setUser_fecConfirmacion(LocalDate user_fecConfirmacion) {
-		this.user_fecConfirmacion = user_fecConfirmacion;
+		
+		if(Validator.userFecConfirmacion(user_fecConfirmacion))
+		{
+			this.user_fecConfirmacion = user_fecConfirmacion;
+		}
+		else
+		{
+			System.out.println(ErrorMessages.USUERR_005);
+		}
+		
 	}
 
 

@@ -3,7 +3,10 @@ package rf.tienda.dominio;
 import java.time.LocalDate;
 import java.util.List;
 
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CollectionTable;
+import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.FetchType;
@@ -14,15 +17,34 @@ import jakarta.persistence.Id;
 public class PedidoCarrito {
 
 	@Id
-	@GeneratedValue		
-	private int id_pedido;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id_pedido;	
 	private int id_usuario;
 	private String id_producto;
 	private int car_cantidad;
 	private double car_precio;
+	//renombramos los campos de direccion para distinguir los campos 
 	@Embedded
+	 @AttributeOverrides({
+	        @AttributeOverride(name = "dir_nombre", column = @Column(name = "envio_nombre")),
+	        @AttributeOverride(name = "dir_direccion", column = @Column(name = "envio_direccion")),
+	        @AttributeOverride(name = "dir_poblacion", column = @Column(name = "envio_poblacion")),
+	        @AttributeOverride(name = "dir_cPostal", column = @Column(name = "envio_cPostal")),
+	        @AttributeOverride(name = "dir_provincia", column = @Column(name = "envio_provincia")),
+	        @AttributeOverride(name = "dir_pais", column = @Column(name = "envio_pais")),
+	        @AttributeOverride(name = "dir_correoE", column = @Column(name = "envio_correoE"))	        
+	    })
 	private Direccion car_envio;
 	@Embedded
+	@AttributeOverrides({
+        @AttributeOverride(name = "dir_nombre", column = @Column(name = "pago_nombre")),
+        @AttributeOverride(name = "dir_direccion", column = @Column(name = "pago_direccion")),
+        @AttributeOverride(name = "dir_poblacion", column = @Column(name = "pago_poblacion")),
+        @AttributeOverride(name = "dir_cPostal", column = @Column(name = "pago_cPostal")),
+        @AttributeOverride(name = "dir_provincia", column = @Column(name = "pago_provincia")),
+        @AttributeOverride(name = "dir_pais", column = @Column(name = "pago_pais")),
+        @AttributeOverride(name = "dir_correoE", column = @Column(name = "pago_correoE"))	        
+    })
 	private Direccion car_pago;
 	private String car_tarjeta;
 	private LocalDate car_feCadud;
@@ -33,7 +55,16 @@ public class PedidoCarrito {
 	@CollectionTable(name="TABLA_FECHAS")
 	private List<String> car_feCambio;
 	
-	
+	/*
+	 * 
+	private String dir_nombre;
+	private String dir_direccion;
+	private String dir_poblacion;
+	private String dir_cPostal;
+	private String dir_provincia;
+	private String dir_pais;
+	private String dir_correoE;
+	 */
 	
 	
 
