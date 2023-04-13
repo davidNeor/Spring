@@ -61,6 +61,7 @@ class DaaTiendaIncienso2023ApplicationTests {
 	private static final LocalDate FUTURO=LocalDate.of(2023, 5, 1);
 	private static final LocalDate HOY=LocalDate.now();
 	private static final LocalDate AYER=HOY.minusDays(1);
+	private static final LocalDate MAÑANA=HOY.plusDays(1);
 	private static final LocalDate FECHA3=LocalDate.of(2023, 10, 2);
 	private static final LocalDate FECHA4=LocalDate.of(2023, 2, 2);
 	
@@ -460,14 +461,10 @@ class DaaTiendaIncienso2023ApplicationTests {
 	@Test
 	void userFecAltaTest()
 	{
-		Calendar hoy=Calendar.getInstance();
-		Calendar mañana = Calendar.getInstance();
-	    mañana.add(Calendar.DAY_OF_MONTH, 1);
-	    Calendar ayer = Calendar.getInstance();
-        ayer.add(Calendar.DAY_OF_MONTH, -1);
-		assertEquals(va.userFecAlta(hoy), true);
-		assertEquals(va.userFecAlta(mañana), false);
-		assertEquals(va.userFecAlta(ayer), false);
+		
+		assertEquals(va.userFecAlta(HOY), true);
+		assertEquals(va.userFecAlta(MAÑANA), false);
+		assertEquals(va.userFecAlta(AYER), false);
 
 
 		
@@ -478,14 +475,10 @@ class DaaTiendaIncienso2023ApplicationTests {
 	void userFecConfirmacion()
 	{
 		
-		Calendar hoy=Calendar.getInstance();
-		Calendar mañana = Calendar.getInstance();
-	    mañana.add(Calendar.DAY_OF_MONTH, 1);
-	    Calendar ayer = Calendar.getInstance();
-        ayer.add(Calendar.DAY_OF_MONTH, -1);
-        assertEquals(va.userFecConfirmacion(hoy), true);
-        assertEquals(va.userFecConfirmacion(mañana), false);
-        assertEquals(va.userFecConfirmacion(ayer), false);
+		
+        assertEquals(va.userFecConfirmacion(HOY), true);
+        assertEquals(va.userFecConfirmacion(MAÑANA), false);
+        assertEquals(va.userFecConfirmacion(AYER), false);
 
 		
 	}

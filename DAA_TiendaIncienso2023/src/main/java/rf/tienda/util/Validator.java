@@ -804,20 +804,12 @@ public class Validator {
 	 * @return true si la fecha coincide con la actual
 	 */
 	
-	public static boolean userFecAlta(Calendar fec)
+	public static boolean userFecAlta(LocalDate fec)
 	{
-		Calendar hoy=Calendar.getInstance();
-		//tenemos que comparar cada campo por separado, ya que el método compareTo compara hasta los segundos y minutos, y nunca van a coincidir
-		int añoHoy=hoy.get(Calendar.YEAR);
-		int mesHoy=hoy.get(Calendar.MONTH);
-		int diaHoy=hoy.get(Calendar.DAY_OF_MONTH);
-		
-		int añoFec=fec.get(Calendar.YEAR);
-		int mesFec=fec.get(Calendar.MONTH);
-		int diaFec=fec.get(Calendar.DAY_OF_MONTH);
+		LocalDate hoy=LocalDate.now();
 		
 		
-		if(diaHoy==diaFec&&mesHoy==mesFec&&añoHoy==añoFec)			
+		if(hoy.equals(fec))			
 		{
 			return true;
 		}
@@ -835,21 +827,14 @@ public class Validator {
 	 * @return 
 	 * 
 	 */
-	 public static boolean userFecConfirmacion(Calendar fec)
+	 public static boolean userFecConfirmacion(LocalDate fec)
 	 {
 		 
-		 Calendar hoy=Calendar.getInstance();
-			//tenemos que comparar cada campo por separado, ya que el método compareTo compara hasta los segundos y minutos, y nunca van a coincidir
-			int añoHoy=hoy.get(Calendar.YEAR);
-			int mesHoy=hoy.get(Calendar.MONTH);
-			int diaHoy=hoy.get(Calendar.DAY_OF_MONTH);
-			
-			int añoFec=fec.get(Calendar.YEAR);
-			int mesFec=fec.get(Calendar.MONTH);
-			int diaFec=fec.get(Calendar.DAY_OF_MONTH);
+		 	LocalDate hoy=LocalDate.now();
 			
 			
-			if(diaHoy==diaFec&&mesHoy==mesFec&&añoHoy==añoFec)			
+			
+			if(hoy.equals(fec))			
 			{
 				return true;
 			}
