@@ -1,10 +1,10 @@
-package rf.tienda.dominio;
+package rf.com.tienda.dominio;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import rf.tienda.util.Validator;
+import rf.com.tienda.util.Validator;
 
 /**
  * 

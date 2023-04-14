@@ -1,4 +1,4 @@
-package rf.tienda.dominio;
+package rf.com.tienda.dominio;
 
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.Entity;
@@ -16,7 +16,8 @@ public class Direccion {
 	private String dir_correoE;
 	
 	
-	
+	public Direccion()
+	{}
 	
 	
 	
@@ -161,10 +162,6 @@ public class Direccion {
 
 
 
-	public Direccion() {
-		
-	}
-	
 	
 	
 	

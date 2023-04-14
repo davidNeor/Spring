@@ -1,4 +1,4 @@
-package rf.tienda.util;
+package rf.com.tienda.util;
 
 import java.time.LocalDate;
 import java.util.Calendar;

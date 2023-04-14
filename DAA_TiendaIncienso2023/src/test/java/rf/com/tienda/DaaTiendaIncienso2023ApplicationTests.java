@@ -9,7 +9,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import rf.tienda.util.Validator;
+import rf.com.tienda.util.Validator;
 
 @SpringBootTest
 class DaaTiendaIncienso2023ApplicationTests {

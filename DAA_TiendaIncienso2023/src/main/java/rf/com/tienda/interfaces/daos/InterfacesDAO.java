@@ -1,4 +1,4 @@
-package rf.tienda.interfaces.daos;
+package rf.com.tienda.interfaces.daos;
 
 
 

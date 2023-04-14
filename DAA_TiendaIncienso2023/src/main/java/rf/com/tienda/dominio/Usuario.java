@@ -1,4 +1,4 @@
-package rf.tienda.dominio;
+package rf.com.tienda.dominio;
 
 import java.time.LocalDate;
 
@@ -6,8 +6,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import rf.tienda.util.ErrorMessages;
-import rf.tienda.util.Validator;
+import rf.com.tienda.util.ErrorMessages;
+import rf.com.tienda.util.Validator;
 
 @Entity
 public class Usuario {

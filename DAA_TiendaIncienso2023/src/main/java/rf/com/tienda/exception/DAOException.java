@@ -1,4 +1,4 @@
-package rf.tienda.exception;
+package rf.com.tienda.exception;
 
 public class DAOException extends Exception {
 	

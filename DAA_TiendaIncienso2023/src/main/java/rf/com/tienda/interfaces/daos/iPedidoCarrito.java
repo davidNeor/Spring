@@ -1,8 +1,8 @@
-package rf.tienda.interfaces.daos;
+package rf.com.tienda.interfaces.daos;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import rf.tienda.dominio.PedidoCarrito;
+import rf.com.tienda.dominio.PedidoCarrito;
 
 public interface iPedidoCarrito extends JpaRepository<PedidoCarrito, Integer> {
 

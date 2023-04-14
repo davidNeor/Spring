@@ -1,4 +1,4 @@
-package rf.tienda.dominio;
+package rf.com.tienda.dominio;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -24,8 +24,9 @@ public class PedidoCarrito {
 	private int id_pedido;
 	@OneToOne
 	private Usuario id_usuario;
-	//como va a ser una relación one-to-many, lo mejor es implementar este campo mediante una colección, aquí irá una relación one-to-many	
-	private List<Producto>id_producto=new ArrayList<Producto>();
+	//como va a ser una relación one-to-many, lo mejor es implementar este campo mediante una colección, aquí irá una relación one-to-many
+	@OneToMany(mappedBy="pedido")
+	private List<Producto>producto=new ArrayList<Producto>();
 	private int car_cantidad;
 	private double car_precio;
 	//renombramos los campos de direccion para distinguir los campos 
@@ -100,14 +101,17 @@ public class PedidoCarrito {
 	
 
 
-	public List<Producto> getId_producto() {
-		return id_producto;
+	
+
+
+	public List<Producto> getProducto() {
+		return producto;
 	}
 
 
 
-	public void setId_producto(List<Producto> id_producto) {
-		this.id_producto = id_producto;
+	public void setProducto(List<Producto> producto) {
+		this.producto = producto;
 	}
 
 
@@ -234,7 +238,7 @@ public class PedidoCarrito {
 
 	@Override
 	public String toString() {
-		return "PedidoCarrito [id_pedido=" + id_pedido + ", id_usuario=" + id_usuario + ", id_producto=" + id_producto
+		return "PedidoCarrito [id_pedido=" + id_pedido + ", id_usuario=" + id_usuario + ", producto=" + producto
 				+ ", car_cantidad=" + car_cantidad + ", car_precio=" + car_precio + ", car_envio=" + car_envio
 				+ ", car_pago=" + car_pago + ", car_tarjeta=" + car_tarjeta + ", car_feCadud=" + car_feCadud
 				+ ", car_ccv=" + car_ccv + ", car_nombre=" + car_nombre + ", car_stat=" + car_stat + ", car_feCambio="

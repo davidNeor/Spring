@@ -1,4 +1,4 @@
-package rf.tienda.dominio;
+package rf.com.tienda.dominio;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -13,9 +13,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
-import rf.tienda.util.ErrorMessages;
-import rf.tienda.util.Validator;
+import rf.com.tienda.util.ErrorMessages;
+import rf.com.tienda.util.Validator;
 
 
 @Entity
@@ -38,6 +39,10 @@ public class Producto {
 	private String pro_usoRecomendado;
 	@OneToOne	
 	private Categoria id_categoria;
+	//campo para la relación many to one
+	@ManyToOne
+	@JoinColumn(name="producto")
+	private PedidoCarrito pedido;
 	private int pro_stkReservado;
 	private int pro_nStkAlto;
 	private int pro_nStkBajo;
