@@ -40,6 +40,17 @@ public class CategoriaTest {
 	@Test
 	void setCat_nombreTest2()throws DomainException
 	{
+
+		Assertions.assertThrows(DomainException.class,()->{
+			cat.setCat_nombre(NOMBRE_ERROR2);
+		});
+	}
+	
+	
+	
+	@Test
+	void setCat_nombreTest3()throws DomainException
+	{
 		
 		Assertions.assertThrows(DomainException.class,()->{
 			cat.setCat_nombre(NOMBRE_ERRROR);
